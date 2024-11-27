@@ -1,9 +1,14 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GifsService {
+
+  private url:string = environment.url;
+  private apiKey:string = environment.apiKey;
 
   private _tagHistory:string[] = [];
 
@@ -11,7 +16,7 @@ export class GifsService {
     return [...this._tagHistory];
   }
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
 
   organizatedTag = (tag:string) => {
@@ -27,6 +32,10 @@ export class GifsService {
      if(tag.length === 0) return;
      this.organizatedTag(tag)
      console.log(this._tagHistory);
+    return  this.http.get(`${this.url}/gifs/search?api_key=${this.apiKey}&q=${tag}&limit=10`).subscribe(response => {
+      console.log(response);
+      
+    })
      
   }
 }
