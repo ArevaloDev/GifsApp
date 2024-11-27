@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CardlistComponent } from './gifs/cardlist/cardlist.component';
+import { SearchgifsComponent } from './gifs/searchgifs/searchgifs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    CardlistComponent,
+    SearchgifsComponent
   ],
   imports: [
     BrowserModule,
