@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchgifsComponent } from './searchgifs.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { GifsService } from '../../services/gifs.service';
 
 describe('SearchgifsComponent', () => {
   let component: SearchgifsComponent;
@@ -8,7 +10,9 @@ describe('SearchgifsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SearchgifsComponent]
+      declarations: [SearchgifsComponent],
+      imports:[HttpClientTestingModule],
+      providers:[GifsService]
     })
     .compileComponents();
     
