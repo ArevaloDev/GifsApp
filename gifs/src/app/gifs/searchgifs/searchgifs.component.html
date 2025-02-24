@@ -1,3 +1,14 @@
 <h5>Buscar:</h5>
 
-<input (keyup.enter)="searchGif()" type="text" class="form-control" placeholder="Buscar gifs..." #txtInput>
+<input
+  (keyup.enter)="searchGif()"
+  type="text"
+  class="form-control"
+  placeholder="Buscar gifs..."
+  #txtInput
+/>
+
+
+<div *ngIf="isLoading"  class="d-flex justify-content-center m-5">
+  <div class="spinner-border" role="status"></div>
+</div>

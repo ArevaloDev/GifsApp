@@ -11,11 +11,16 @@ export class GifsService {
   private url:string = environment.url;
   private apiKey:string = environment.apiKey;
   public gifList:Data[] = [];
+  private  isLoading:boolean = false;
 
   private _tagHistory:string[] = [];
 
   get tagsHistory(){
     return [...this._tagHistory];
+  }
+
+  get loading(){
+    return this.isLoading;
   }
 
   constructor(private http:HttpClient) { }
@@ -31,14 +36,16 @@ export class GifsService {
   }
 
   searchGif = (tag:string) => {
+    this.isLoading = true;
      if(tag.length === 0) return;
      this.organizatedTag(tag)
      console.log(this._tagHistory);
     return  this.http.get<GifResponse>(`${this.url}/gifs/search?api_key=${this.apiKey}&q=${tag}&limit=10`).subscribe(response => {
       console.log(response);
       this.gifList = response.data;
-      
+      this.isLoading = false;
+
     })
-     
+
   }
 }

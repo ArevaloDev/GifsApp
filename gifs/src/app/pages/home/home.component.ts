@@ -9,9 +9,13 @@ import { Data } from '../../interfaces/gifs.interface';
 })
 export class HomeComponent {
 
-  
+
   constructor(private gifServices:GifsService){}
   get gifs():Data[]{
     return this.gifServices.gifList;
+  }
+
+  get loading():boolean{
+    return this.gifServices.loading;
   }
 }

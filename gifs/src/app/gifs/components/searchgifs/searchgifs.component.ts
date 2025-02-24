@@ -8,16 +8,12 @@ import { GifsService } from '../../services/gifs.service';
 })
 export class SearchgifsComponent {
   @ViewChild('txtInput') txtValue!:ElementRef<HTMLInputElement>;
-
   constructor(private gifService:GifsService){}
 
-  get isLoading(){
-    return this.gifService.loading;
-  }
   searchGif = () => {
     const valueInput = this.txtValue.nativeElement.value;
     this.gifService.searchGif(valueInput);
     this.txtValue.nativeElement.value = '';
-
+    
   }
 }
